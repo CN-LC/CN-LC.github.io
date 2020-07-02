@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://wx2.sbimg.cn/2020/06/30/2weNl.jpg">
 <meta property="article:published_time" content="2020-06-30T13:30:00.000Z">
-<meta property="article:modified_time" content="2020-07-01T15:39:19.615Z">
+<meta property="article:modified_time" content="2020-07-02T15:56:07.174Z">
 <meta property="article:author" content="麻辣鱼鳞">
 <meta property="article:tag" content="队列">
 <meta name="twitter:card" content="summary">
@@ -157,7 +157,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分钟 读完 (大约 441 个字)
+                    3 分钟 读完 (大约 416 个字)
                 </span>
                 
                 
@@ -205,6 +205,18 @@
 <p>滑动窗口：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; B,<span class="keyword">int</span> addA,<span class="keyword">int</span> addB,<span class="keyword">int</span> len)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans=<span class="number">0</span>;                <span class="comment">//检查每次滑动最长子数组</span></span><br><span class="line">        <span class="keyword">int</span> k=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(A[i+addA]==B[i+addB])&#123;</span><br><span class="line">                k++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> k=<span class="number">0</span>;</span><br><span class="line">            ans=<span class="built_in">max</span>(k,ans);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findLength</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; B)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m=A.<span class="built_in">size</span>(),n=B.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">int</span> res=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;i++)&#123;   <span class="comment">//A不动B滑动</span></span><br><span class="line">            <span class="keyword">int</span> len=<span class="built_in">min</span>(m-i,n);</span><br><span class="line">            <span class="keyword">int</span> res1=<span class="built_in">find</span>(A,B,i,<span class="number">0</span>,len);</span><br><span class="line">            res=<span class="built_in">max</span>(res1,res);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;  <span class="comment">////B不动A滑动</span></span><br><span class="line">            <span class="keyword">int</span> len=<span class="built_in">min</span>(n-i,n);</span><br><span class="line">            <span class="keyword">int</span> res2=<span class="built_in">find</span>(A,B,<span class="number">0</span>,i,len);</span><br><span class="line">            res=<span class="built_in">max</span>(res2,res);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
+<h4 id="378-有序矩阵中第K小的元素"><a href="#378-有序矩阵中第K小的元素" class="headerlink" title="378. 有序矩阵中第K小的元素"></a><a href="https://leetcode-cn.com/problems/kth-smallest-element-in-a-sorted-matrix/">378. 有序矩阵中第K小的元素</a></h4><p>难度中等</p>
+<p>给定一个 <em><code>n x n</code></em> 矩阵，其中每行和每列元素均按升序排序，找到矩阵中第 <code>k</code> 小的元素。<br>请注意，它是排序后的第 <code>k</code> 小元素，而不是第 <code>k</code> 个不同的元素。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">matrix &#x3D; [</span><br><span class="line">   [ 1,  5,  9],</span><br><span class="line">   [10, 11, 13],</span><br><span class="line">   [12, 13, 15]</span><br><span class="line">],</span><br><span class="line">k &#x3D; 8,</span><br><span class="line"></span><br><span class="line">返回 13。</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>提示：</strong><br>你可以假设 k 的值永远是有效的，<code>1 ≤ k ≤ n2</code>。</p>
+<p>暴力不推荐 学到了新语法 注意是vector push_back,加&amp;省时间。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">kthSmallest</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; rec;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; row : matrix) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">auto</span> it : row) &#123;</span><br><span class="line">                rec.push_back(it);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        sort(rec.<span class="built_in">begin</span>(), rec.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">return</span> rec[k - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>归并排序法：</p>
 
         </div>
         
@@ -412,6 +424,10 @@
         <a class="is-flex" href="#718-最长重复子数组">
         <span class="has-mr-6">2</span>
         <span>718. 最长重复子数组</span>
+        </a></li><li>
+        <a class="is-flex" href="#378-有序矩阵中第K小的元素">
+        <span class="has-mr-6">3</span>
+        <span>378. 有序矩阵中第K小的元素</span>
         </a></li></ul>
             </div>
         </div>
