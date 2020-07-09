@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://wx2.sbimg.cn/2020/06/30/2weNl.jpg">
 <meta property="article:published_time" content="2020-06-30T13:30:00.000Z">
-<meta property="article:modified_time" content="2020-07-08T12:38:00.169Z">
+<meta property="article:modified_time" content="2020-07-09T13:35:25.554Z">
 <meta property="article:author" content="麻辣鱼鳞">
 <meta property="article:tag" content="leetcode">
 <meta name="twitter:card" content="summary">
@@ -157,7 +157,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    20 分钟 读完 (大约 3071 个字)
+                    23 分钟 读完 (大约 3440 个字)
                 </span>
                 
                 
@@ -341,7 +341,24 @@
 <p>官解：分情况讨论</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; divingBoard(<span class="keyword">int</span> shorter, <span class="keyword">int</span> longer, <span class="keyword">int</span> k) &#123;</span><br><span class="line">        <span class="keyword">if</span> (k == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; ();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (shorter == longer) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; (<span class="number">1</span>, shorter * k);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; lengths(k + <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= k; ++i) &#123;</span><br><span class="line">            lengths[i] = shorter * (k - i) + longer * i;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> lengths;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">作者：LeetCode-Solution</span><br><span class="line">链接：https:<span class="comment">//leetcode-cn.com/problems/diving-board-lcci/solution/tiao-shui-ban-by-leetcode-solution/</span></span><br><span class="line">来源：力扣（LeetCode）</span><br><span class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure>
 
+<h4 id="面试题-17-13-恢复空格"><a href="#面试题-17-13-恢复空格" class="headerlink" title="面试题 17.13. 恢复空格"></a><a href="https://leetcode-cn.com/problems/re-space-lcci/">面试题 17.13. 恢复空格</a></h4><p>难度中等</p>
+<p>哦，不！你不小心把一个长篇文章中的空格、标点都删掉了，并且大写也弄成了小写。像句子<code>&quot;I reset the computer. It still didn’t boot!&quot;</code>已经变成了<code>&quot;iresetthecomputeritstilldidntboot&quot;</code>。在处理标点符号和大小写之前，你得先把它断成词语。当然了，你有一本厚厚的词典<code>dictionary</code>，不过，有些词没在词典里。假设文章用<code>sentence</code>表示，设计一个算法，把文章断开，要求未识别的字符最少，返回未识别的字符数。</p>
+<p><strong>注意：</strong>本题相对原题稍作改动，只需返回未识别的字符数</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">dictionary &#x3D; [&quot;looked&quot;,&quot;just&quot;,&quot;like&quot;,&quot;her&quot;,&quot;brother&quot;]</span><br><span class="line">sentence &#x3D; &quot;jesslookedjustliketimherbrother&quot;</span><br><span class="line">输出： 7</span><br><span class="line">解释： 断句后为&quot;jess looked just like tim her brother&quot;，共7个未识别字符。</span><br></pre></td></tr></table></figure>
 
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>0 &lt;= len(sentence) &lt;= 1000</code></li>
+<li><code>dictionary</code>中总字符数不超过 150000。</li>
+<li>你可以认为<code>dictionary</code>和<code>sentence</code>中只包含小写字母。</li>
+</ul>
+<p>dp方法：</p>
+<p>数组最好用vector声明的时候就可以初始化，数组则不要忘记用memset初始化。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">respace</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; dictionary, <span class="built_in">string</span> sentence)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> dic_len=dictionary.<span class="built_in">size</span>(),sen_len=sentence.<span class="built_in">size</span>();</span><br><span class="line">        <span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt;dp(sen_len+<span class="number">10</span>,<span class="number">0</span>); <span class="comment">//表示前i个字符 最小未识别个数</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=sen_len;i++)&#123;</span><br><span class="line">            dp[i]=dp[i<span class="number">-1</span>]+<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;dic_len;j++)&#123;</span><br><span class="line">                <span class="keyword">int</span> len=dictionary[j].<span class="built_in">size</span>();</span><br><span class="line">                <span class="keyword">if</span>(len&lt;=i&amp;&amp;dictionary[j]==sentence.substr(i-len,len))</span><br><span class="line">                    dp[i]=<span class="built_in">min</span>(dp[i-len],dp[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[sen_len];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><font color="red"><strong>优化待学</strong></font></p>
+<h4 id="Trie-动态规划"><a href="#Trie-动态规划" class="headerlink" title="Trie + 动态规划"></a>Trie + 动态规划</h4><h4 id="字符串哈希"><a href="#字符串哈希" class="headerlink" title="字符串哈希"></a>字符串哈希</h4>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -576,6 +593,18 @@
         <a class="is-flex" href="#面试题-16-11-跳水板">
         <span class="has-mr-6">9</span>
         <span>面试题 16.11. 跳水板</span>
+        </a></li><li>
+        <a class="is-flex" href="#面试题-17-13-恢复空格">
+        <span class="has-mr-6">10</span>
+        <span>面试题 17.13. 恢复空格</span>
+        </a></li><li>
+        <a class="is-flex" href="#Trie-动态规划">
+        <span class="has-mr-6">11</span>
+        <span>Trie + 动态规划</span>
+        </a></li><li>
+        <a class="is-flex" href="#字符串哈希">
+        <span class="has-mr-6">12</span>
+        <span>字符串哈希</span>
         </a></li></ul>
             </div>
         </div>
